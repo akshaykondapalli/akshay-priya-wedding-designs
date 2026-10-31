@@ -134,6 +134,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 .cal-opt.subtle{border-color:transparent;background:transparent;font:500 32px/1 var(--ui);color:#6b5642;min-height:70px}
 
 /* transition bloom */
-.bloom{position:fixed;inset:0;z-index:40;pointer-events:none;opacity:0;background:radial-gradient(circle at var(--bx,50%) var(--by,60%),#fffaf0 0%,#ffe6ac 24%,#f5c46a 52%,#d99a45 100%)}
+.bloom{position:fixed;left:50%;top:60%;width:300vmax;height:300vmax;margin:-150vmax 0 0 -150vmax;z-index:40;pointer-events:none;opacity:0;border-radius:50%;
+  background:radial-gradient(circle,#fffbf2 0%,#fff0c8 18%,#ffe1a0 32%,#f6c871 46%,#f3c06acc 54%,#f3c06a00 70%);transform:scale(0);will-change:transform,opacity}
 
 @media (prefers-reduced-motion:reduce){.sheet.in{animation:none}.card-bar.on{transition:none}}

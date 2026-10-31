@@ -66,16 +66,16 @@
   const bloom = $('#bloom');
   async function bloomTo(next, pt, id) {
     if (reduce) { show(next); return; }
-    bloom.style.setProperty('--bx', pt.x + 'px'); bloom.style.setProperty('--by', pt.y + 'px');
+    bloom.style.left = pt.x + 'px'; bloom.style.top = pt.y + 'px';
     const grow = bloom.animate([
-      { opacity: 0, clipPath: `circle(0px at ${pt.x}px ${pt.y}px)` },
-      { opacity: 1, clipPath: `circle(16% at ${pt.x}px ${pt.y}px)`, offset: .35 },
-      { opacity: 1, clipPath: `circle(150% at ${pt.x}px ${pt.y}px)` }], { duration: 1150, easing: 'cubic-bezier(.5,0,.3,1)', fill: 'forwards' });
+      { opacity: 0, transform: 'scale(0.02)' },
+      { opacity: 1, transform: 'scale(0.25)', offset: .3 },
+      { opacity: 1, transform: 'scale(1.15)' }], { duration: 1300, easing: 'cubic-bezier(.45,0,.25,1)', fill: 'forwards' });
     await done(grow); if (!stillRunning(id)) { grow.cancel(); return; }
     show(next);
     const st = scenes[next].querySelector('.stage');
     st.animate([{ transform: 'translate(-50%,-50%) scale(calc(var(--s) * 1.05))' }, { transform: 'translate(-50%,-50%) scale(var(--s))' }], { duration: 1500, easing: 'cubic-bezier(.2,.7,.2,1)' });
-    const fade = bloom.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 950, easing: 'ease-out', fill: 'forwards' });
+    const fade = bloom.animate([{ opacity: 1, transform: 'scale(1.15)' }, { opacity: 0, transform: 'scale(1.6)' }], { duration: 1000, easing: 'ease-out', fill: 'forwards' });
     await done(fade); grow.cancel(); fade.cancel();
   }
 
