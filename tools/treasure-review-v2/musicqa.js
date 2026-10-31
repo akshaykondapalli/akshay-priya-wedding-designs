@@ -11,10 +11,10 @@ const [url, devName] = process.argv.slice(2);
   const tap = async sel => {
     let x, y;
     if (sel === 'PILL') {
-      const pt = await p.evaluate(() => { for (const b of document.querySelectorAll('.scene.is-active .music-pill')) { const r = b.getBoundingClientRect(); const cx = r.left + r.width / 2, cy = r.top + r.height / 2; const hit = document.elementFromPoint(cx, cy); if (hit && b.contains(hit)) return [cx, cy]; } return null; });
+      const pt = await p.evaluate(() => { for (const b of document.querySelectorAll('#musicBtn')) { const r = b.getBoundingClientRect(); const cx = r.left + r.width / 2, cy = r.top + r.height / 2; const hit = document.elementFromPoint(cx, cy); if (hit && b.contains(hit)) return [cx, cy]; } return null; });
       if (!pt) throw new Error('no tappable music button visible'); [x, y] = pt;
     } else { const bb = await p.locator(sel).first().boundingBox(); x = bb.x + bb.width / 2; y = bb.y + bb.height / 2; } dev.hasTouch ? await p.touchscreen.tap(x, y) : await p.mouse.click(x, y); };
-  const A = () => p.evaluate(() => { const a = document.getElementById('bgm'); const vis = [...document.querySelectorAll('.scene.is-active .music-pill')].find(b => { const r = b.getBoundingClientRect(); const h = document.elementFromPoint(r.left + r.width / 2, r.top + r.height / 2); return h && b.contains(h); }); return { paused: a.paused, t: +a.currentTime.toFixed(2), vol: a.volume, loop: a.loop, dur: +a.duration.toFixed(1), src: a.currentSrc.split('/').pop(), label: vis && vis.innerText.trim(), scene: window.__treasure.state.current, audios: document.querySelectorAll('audio').length }; });
+  const A = () => p.evaluate(() => { const a = document.getElementById('bgm'); const vis = [...document.querySelectorAll('#musicBtn')].find(b => { const r = b.getBoundingClientRect(); const h = document.elementFromPoint(r.left + r.width / 2, r.top + r.height / 2); return h && b.contains(h); }); return { paused: a.paused, t: +a.currentTime.toFixed(2), vol: a.volume, loop: a.loop, dur: +a.duration.toFixed(1), src: a.currentSrc.split('/').pop(), label: vis && vis.innerText.trim(), scene: window.__treasure.state.current, audios: document.querySelectorAll('audio').length }; });
   const R = {};
   await p.goto(url, { waitUntil: 'networkidle' }); await p.waitForTimeout(800);
   R.beforeTap = await A();

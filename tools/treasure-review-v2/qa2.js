@@ -46,17 +46,17 @@ fs.mkdirSync(out, { recursive: true });
   await p.waitForTimeout(3500); await shot('7-invitation'); R.sceneEnd = (await st()).current;
   R.cardsOn = await p.evaluate(() => document.querySelector('#cardBar').classList.contains('on'));
   await tap('#cardBar [data-open-details]'); await p.waitForTimeout(700); await shot('8-details');
-  R.sheet = await p.evaluate(() => ({ text: document.querySelector('#sheet').innerText.replace(/\s+/g, ' '), gcal: document.querySelector('#gcalLink').href, maps: document.querySelector('#mapsLink').href, music: document.querySelector('.music-pill').getAttribute('aria-disabled') }));
+  R.sheet = await p.evaluate(() => ({ text: document.querySelector('#sheet').innerText.replace(/\s+/g, ' '), gcal: document.querySelector('#gcalLink').href, maps: document.querySelector('#mapsLink').href, music: document.querySelector('#musicBtn').getAttribute('aria-pressed') }));
   await tap('#sheet [data-calendar]'); await p.waitForTimeout(300); await shot('8b-calendar');
   const [dl] = await Promise.all([p.waitForEvent('download', { timeout: 4000 }).catch(() => null), tap('#icsBtn')]);
   R.ics = dl ? fs.readFileSync(await dl.path(), 'utf8').split('\r\n').filter(l => /DT|SUMMARY|LOCATION/.test(l)) : 'none';
   await tap('#sheetClose'); await p.waitForTimeout(300);
   await tap('#cardBar [data-replay]'); await p.waitForTimeout(800); R.replay = await st();
-  await tap('#skipBtn'); await p.waitForTimeout(800); R.skip = (await st()).current;
+  await p.evaluate(() => document.querySelector('.skiplink').click()); await p.waitForTimeout(800); R.skip = (await st()).current; R.galleryLinks = await p.evaluate(() => [...document.querySelectorAll('a')].filter(a => /index\.html|five-concepts\/?$|All designs|All five/i.test(a.getAttribute('href') + ' ' + a.textContent)).length); R.reviewText = await p.evaluate(() => (document.body.innerText.match(/review|design concept|coming soon|All designs/i) || [null])[0]);
   R.forbidden = await p.evaluate(() => (document.documentElement.textContent.match(/pellikoduku|lunch|morning|reception|haldi|sangeet|mehendi/i) || [null])[0]);
   R.errors = errors; R.failed = failed;
   fs.writeFileSync(`${out}/${tag}-report.json`, JSON.stringify(R, null, 1));
-  console.log(JSON.stringify({ dev: devName, overflow: R.overflow, afterBegin: R.afterBegin, afterOpen: R.afterOpen, sceneMap: R.sceneMap, sceneEnd: R.sceneEnd, cardsOn: R.cardsOn,
+  console.log(JSON.stringify({ gallery: R.galleryLinks, reviewText: R.reviewText, dev: devName, overflow: R.overflow, afterBegin: R.afterBegin, afterOpen: R.afterOpen, sceneMap: R.sceneMap, sceneEnd: R.sceneEnd, cardsOn: R.cardsOn,
     maxOff: Math.max(...samples.map(s => Math.max(s.offT, s.offG))), planesVisible: samples.map(s => s.visiblePlanes), progress: samples.map(s => s.p), onscreen: samples.map(s => s.T.onscreen && s.G.onscreen),
     replay: R.replay.current + '/' + R.replay.s1, skip: R.skip, forbidden: R.forbidden, music: R.sheet.music, ics: R.ics, errors, failed }));
   await b.close();

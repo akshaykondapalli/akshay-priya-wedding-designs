@@ -6,11 +6,12 @@
 (function () {
   'use strict';
   // ---------- configuration ----------
+  const FINAL_URL = 'https://akshaykondapalli.github.io/akshay-priya-wedding-designs/treasure-review/';
   const MUSIC_VOLUME = 0.4;                              // soundtrack: audio/wedding-music.mp3 (the <audio id="bgm"> element)
   const MUHURTHAM = new Date('2026-11-21T21:55:00+05:30');
-  const CAL = { start: '20261121T143000Z', end: '20261121T173000Z' }; // 8:00–11:00 PM IST · end time PROVISIONAL
+  const CAL = { start: '20261121T143000Z', end: '20261121T143000Z' }; // starts 8:00 PM IST; no end time is invented (none approved)
   const TITLE = 'Wedding of Akshay & Priya';
-  const DETAILS = 'Wedding dinner 8:00 PM IST · Auspicious muhurtham 9:55 PM IST · End time provisional';
+  const DETAILS = 'Wedding dinner 8:00 PM IST · Auspicious muhurtham 9:55 PM IST';
   const VENUE = 'Priyanka Convention, Nallajerla, Andhra Pradesh, India';
   // Routes traced from storyboard frame 6 and anchored to frame 4's own pins (941×1672 stage coordinates)
   const ROUTE_T = 'M141.0 668.0 C144.3 674.6 151.7 697.9 160.8 707.7 C169.9 717.5 182.9 722.2 195.7 726.9 C208.5 731.6 224.4 732.6 237.7 735.7 C251.0 738.8 263.0 741.3 275.6 745.6 C288.2 749.9 301.6 755.5 313.6 761.7 C325.6 767.9 336.5 775.5 347.5 782.9 C358.5 790.3 368.8 797.9 379.4 806.1 C390.0 814.4 400.0 822.6 411.3 832.4 C422.6 842.2 436.1 853.7 447.4 864.9 C458.7 876.1 469.9 888.6 479.3 899.4 C488.8 910.2 495.7 918.4 504.1 929.8 C512.6 941.1 521.5 954.3 530.0 967.5 C538.5 980.7 547.1 995.0 554.9 1009.2 C562.7 1023.5 570.1 1039.1 576.7 1053.0 C583.3 1066.9 588.6 1082.9 594.5 1092.7 C600.4 1102.5 609.1 1108.8 612.0 1112.0';
@@ -40,9 +41,7 @@
   const stagePoint = (scene, x, y) => { const r = scene.querySelector('.stage').getBoundingClientRect(); return { x: r.left + x * r.width / 941, y: r.top + y * r.height / 1672 }; };
 
   /* ---------- music pills (one per frame position, identical behaviour) ---------- */
-  const tpl = $('#musicTpl');
-  $$('.music-slot').forEach(slot => slot.appendChild(tpl.content.cloneNode(true)));
-  const pills = $$('.music-pill');
+  const pills = [$('#musicBtn')];
   // One persistent <audio> element for the whole invitation. Scene changes, Replay Story and the
   // Wedding Details sheet never touch it, so the music carries on uninterrupted.
   const audio = $('#bgm'); audio.loop = true; audio.volume = MUSIC_VOLUME;
@@ -53,12 +52,14 @@
     if (audio.paused) {
       audio.volume = MUSIC_VOLUME;
       const pr = audio.play();                          // only ever called from a guest's tap (autoplay rules)
-      if (pr && pr.catch) pr.catch(() => setMusicUI(false));
+      if (pr && pr.catch) pr.catch(() => setMusicUI(!audio.paused));   // never show a false playing state
     } else audio.pause();                               // keeps currentTime, so Play resumes where it stopped
   }
   audio.addEventListener('play', () => setMusicUI(true));
   audio.addEventListener('pause', () => setMusicUI(false));
   audio.addEventListener('error', () => setMusicUI(false));
+  audio.addEventListener('ended', () => setMusicUI(!audio.paused));
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) setMusicUI(!audio.paused); }); // resync after screen lock
   pills.forEach(p => p.addEventListener('click', toggleMusic));
   setMusicUI(false);
 
@@ -66,7 +67,7 @@
   function show(name) {
     Object.entries(scenes).forEach(([k, el]) => { const on = k === name; el.classList.toggle('is-active', on); el.inert = !on; el.setAttribute('aria-hidden', String(!on)); });
     current = name; app.dataset.scene = name;
-    $('#skipBtn').hidden = name === 'invitation';
+    requestAnimationFrame(placeFab);
     try { history.replaceState(null, '', '#' + (name === 'discover' ? 'treasure' : name)); } catch (_) {}
   }
   const bloom = $('#bloom');
@@ -96,7 +97,7 @@
     const a2 = anim(chestL, [{ transform: M12i }, { transform: ID }], { duration: 1500 });
     await Promise.all([done(a1), done(a2)]); if (!stillRunning(id)) return;
     cover.style.visibility = 'hidden';
-    scenes.discover.classList.add('s1-chest'); s1 = 'chest';
+    scenes.discover.classList.add('s1-chest'); s1 = 'chest'; placeFab();
     chestBtn.tabIndex = 0; chestBtn.focus({ preventScroll: true });
     chestBtn.animate([{ boxShadow: '0 0 0 0 #ffe7a000' }, { boxShadow: '0 0 0 30px #ffe7a033' }, { boxShadow: '0 0 0 0 #ffe7a000' }], { duration: 1800, iterations: 2 });
   }
@@ -129,7 +130,7 @@
     if (stillRunning(id)) $('#followBtn').focus({ preventScroll: true });
   }
   function resetScene1() {
-    s1 = 'cover';
+    s1 = 'cover'; requestAnimationFrame(placeFab);
     [cover, chestL, openL, lid, lock, $('#chestBase'), $('#chestClosed'), $('.chest-glow'), $('.beams'), $('#flash'), $('#keyglint'), chestBtn].forEach(el => el.getAnimations().forEach(a => a.cancel()));
     cover.style.visibility = ''; lid.style.visibility = ''; lock.style.visibility = ''; openL.style.opacity = ''; $('#chestClosed').style.opacity = '';
     scenes.discover.classList.remove('s1-chest'); chestBtn.tabIndex = -1; beginBtn.disabled = false;
@@ -212,7 +213,26 @@
 
   /* ---------- Scene 3 ---------- */
   const cardBar = $('#cardBar');
-  function revealInvite() { cardBar.classList.remove('on'); void cardBar.offsetWidth; requestAnimationFrame(() => cardBar.classList.add('on')); }
+  function revealInvite() { cardBar.classList.remove('on'); void cardBar.offsetWidth; requestAnimationFrame(() => { cardBar.classList.add('on'); placeFab(); }); }
+
+
+  /* ---------- music button placement: bottom-right, lifted clear of story controls and wedding details ---------- */
+  const fab = $('#musicBtn');
+  function placeFab() {
+    const scene = scenes[current], vh = innerHeight;
+    const obs = [];
+    const add = el => { if (!el) return; const cs = getComputedStyle(el); if (cs.display === 'none' || cs.visibility === 'hidden' || +cs.opacity < .05) return; const r = el.getBoundingClientRect(); if (r.width && r.height) obs.push(r); };
+    if (current === 'discover') { add(s1 === 'cover' ? beginBtn : null); if (s1 !== 'cover') { const st = scene.querySelector('.stage').getBoundingClientRect(), k = st.width / 941; obs.push({ left: st.left + 126 * k, right: st.left + 818 * k, top: st.top + 930 * k, bottom: st.top + 1606 * k }); } }
+    if (current === 'journey') add(followBtn);
+    if (current === 'invitation') { add(cardBar.classList.contains('on') ? cardBar : null); if (!sheet.hidden) add(sheet); if (!calPop.hidden) add(calPop); }
+    const tryPos = (compact, bottom) => { fab.classList.toggle('compact', compact); fab.style.setProperty('--fab-bottom', bottom + 'px'); const r = fab.getBoundingClientRect(); const pad = 6; const hit = obs.find(o => r.left < o.right + pad && r.right > o.left - pad && r.top < o.bottom + pad && r.bottom > o.top - pad); return hit; };
+    fab.style.transition = 'none';
+    let hit = tryPos(false, 12);
+    if (hit) hit = tryPos(true, 12);
+    if (hit) { const top = Math.min(...obs.filter(o => o.right > fab.getBoundingClientRect().left).map(o => o.top)); tryPos(true, Math.max(12, vh - top + 10)); }
+    void fab.offsetWidth; fab.style.transition = '';
+  }
+  addEventListener('resize', () => requestAnimationFrame(placeFab));
 
   /* ---------- skip / replay ---------- */
   function hardReset() { runId++; resetScene1(); resetFlight(); closeSheet(); closeCal(); cardBar.classList.remove('on'); bloom.getAnimations().forEach(a => a.cancel()); bloom.style.opacity = 0; }
@@ -223,15 +243,15 @@
 
   /* ---------- details sheet ---------- */
   const sheet = $('#sheet'); let lastFocus = null;
-  function openSheet() { lastFocus = document.activeElement; closeCal(); sheet.hidden = false; sheet.classList.remove('in'); void sheet.offsetWidth; sheet.classList.add('in'); $('#sheetClose').focus({ preventScroll: true }); tick(); }
-  function closeSheet() { if (sheet.hidden) return; sheet.hidden = true; if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true }); }
+  function openSheet() { lastFocus = document.activeElement; closeCal(); sheet.hidden = false; sheet.classList.remove('in'); void sheet.offsetWidth; sheet.classList.add('in'); $('#sheetClose').focus({ preventScroll: true }); tick(); placeFab(); }
+  function closeSheet() { if (sheet.hidden) return; sheet.hidden = true; placeFab(); if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true }); }
   $$('[data-open-details]').forEach(b => b.addEventListener('click', openSheet));
   $('#sheetClose').addEventListener('click', closeSheet);
 
   /* calendar chooser */
   const calPop = $('#calPop');
-  function openCal() { calPop.hidden = false; $('#gcalLink').focus({ preventScroll: true }); }
-  function closeCal() { calPop.hidden = true; }
+  function openCal() { calPop.hidden = false; placeFab(); $('#gcalLink').focus({ preventScroll: true }); }
+  function closeCal() { calPop.hidden = true; if (typeof placeFab === 'function') placeFab(); }
   $$('[data-calendar]').forEach(b => b.addEventListener('click', openCal));
   $('#calClose').addEventListener('click', closeCal);
   $('#gcalLink').href = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + encodeURIComponent(TITLE) + '&dates=' + CAL.start + '/' + CAL.end + '&ctz=Asia/Kolkata&details=' + encodeURIComponent(DETAILS) + '&location=' + encodeURIComponent(VENUE);
@@ -265,7 +285,7 @@
 
   /* share */
   async function share() {
-    const note = $('#note'), url = location.href.split('#')[0];
+    const note = $('#note'), url = FINAL_URL;
     const data = { title: 'Akshay & Priya · The Treasure We Found', text: 'Saturday, 21 November 2026 · Priyanka Convention, Nallajerla', url };
     try { if (navigator.share) { await navigator.share(data); return; } } catch (e) { if (e && e.name === 'AbortError') return; }
     try { await navigator.clipboard.writeText(url); note.textContent = 'Link copied.'; } catch (_) { note.textContent = 'Copy this link: ' + url; }
