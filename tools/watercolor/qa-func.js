@@ -1,0 +1,25 @@
+const { chromium } = require('playwright');
+(async () => {
+  const b = await chromium.launch();
+  const ctx = await b.newContext({ viewport: { width: 390, height: 844 }, acceptDownloads: true, permissions: ['clipboard-read','clipboard-write'] });
+  const p = await ctx.newPage();
+  await p.goto('http://localhost:8732/watercolor/index.html');
+  await p.click('.menu-btn');
+  const open = await p.isVisible('#menu');
+  await p.keyboard.press('Escape');
+  const closed = await p.isHidden('#menu');
+  await p.click('.menu-btn'); await p.click('#menu a[href="#details"]');
+  await p.waitForTimeout(1200);
+  const atDetails = await p.evaluate(() => Math.abs(document.getElementById('details').getBoundingClientRect().top) < 200);
+  const [dl] = await Promise.all([p.waitForEvent('download'), p.click('#ics')]);
+  const path = await dl.path(); const ics = require('fs').readFileSync(path, 'utf8');
+  await p.evaluate(() => { delete navigator.share; });
+  await p.click('#share'); await p.waitForTimeout(300);
+  const status = await p.textContent('#share-status');
+  const gcal = await p.getAttribute('#gcal', 'href');
+  const maps = await p.getAttribute('a[href*="google.com/maps"]', 'href');
+  const back = await p.getAttribute('.back', 'href');
+  const skip = await p.evaluate(() => { document.querySelector('[data-skip]').click(); return true; });
+  console.log({ open, closed, atDetails, icsOk: /DTSTART:20261121T143000Z/.test(ics) && /Priyanka Convention/.test(ics), status, gcal, maps, back, count: await p.textContent('#count') });
+  await b.close();
+})();

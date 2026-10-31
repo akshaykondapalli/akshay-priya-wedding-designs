@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Living Watercolor · Akshay &amp; Priya</title>
+<meta name="description" content="Design study 02 — a hand-painted watercolor invitation for the wedding of Akshay and Priya, Saturday 21 November 2026, Priyanka Convention, Nallajerla.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#f8f2e6">
+<link rel="preload" href="fonts/lora-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/italianno-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="img/frontispiece.webp" as="image">
+<link rel="stylesheet" href="style.css">
+<script>document.documentElement.classList.replace('no-js','js');</script>
+</head>
+<body>
+<a class="skip-link" href="#invitation">Skip to the invitation</a>
+
+<header class="bar">
+  <a class="back" href="../index.html"><span aria-hidden="true">←</span> All designs</a>
+  <span class="bar-title">02 · Living Watercolor</span>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">Chapters</button>
+</header>
+
+<nav id="menu" class="menu" aria-label="Chapters" hidden>
+  <ol>
+    <li><a href="#arrival">The Arrival</a></li>
+    <li><a href="#souls">Two Souls</a></li>
+    <li><a href="#connection">The Connection</a></li>
+    <li><a href="#destination">The Destination</a></li>
+    <li><a href="#invitation">The Invitation</a></li>
+    <li><a href="#details">Wedding Details</a></li>
+    <li><a href="#blessing">Final Blessing</a></li>
+  </ol>
+</nav>
+
+<main>
+
+<!-- 1 · ARRIVAL -->
+<section id="arrival" class="arrival" data-chapter="arrival" aria-labelledby="t-arrival">
+  <div class="arrival-text">
+    <p class="eyebrow">A painted invitation</p>
+    <h1 id="t-arrival" class="book-title">The Atlas of Us</h1>
+    <p class="names-script" aria-label="Akshay and Priya">Akshay <span class="amp">&amp;</span> Priya</p>
+    <p class="thesis">Two souls. Two journeys. One destination.</p>
+    <div class="arrival-actions">
+      <a class="btn" href="#souls">Turn the page</a>
+      <a class="btn btn-quiet" href="#invitation" data-skip>Skip to the invitation</a>
+    </div>
+  </div>
+  <figure class="paint arrival-art">
+    <img data-paint data-seed="0.5,0.95" data-pigment="132,160,110" src="img/frontispiece.webp" width="1080" height="1500" alt="A watercolor of pink lotuses on a pale blue pond, framed by arching sprays of white jasmine.">
+  </figure>
+</section>
+
+<!-- 2 + 3 · TWO SOULS / THE CONNECTION (one painted map, two chapters) -->
+<div class="journey" id="journey">
+  <div class="stage">
+    <div class="map-frame">
+      <img class="map-img" data-paint data-seed="0.5,0.5" data-pigment="96,150,190" src="img/map.webp" width="1080" height="1500" alt="">
+      <svg class="map-svg" viewBox="0 0 1080 1500" role="img" aria-labelledby="map-desc">
+        <title id="map-desc">An imaginary painted map. A rose-coloured path and a blue path each cross the sea from opposite islands and meet on a central island, where their colours blend. These are symbolic journeys, not real places.</title>
+        <defs>
+          <mask id="m-rose" maskUnits="userSpaceOnUse" x="0" y="0" width="1080" height="1500">
+            <path id="p-rose" fill="none" stroke="#fff" stroke-width="70" stroke-linecap="round" stroke-linejoin="round" d="M185 300 L198 292 L218 278 L240 262 L264 248 L287 237 L308 232 L325 238 L342 254 L358 278 L372 306 L384 336 L392 366 L395 392 L391 414 L378 433 L358 450 L336 467 L315 484 L298 501 L290 520 L290 541 L294 564 L302 587 L314 610 L327 632 L341 650 L355 664 L370 673 L388 677 L407 680 L426 682 L446 687 L464 696 L482 711 L501 732 L521 758 L540 784 L557 810 L571 831 L582 846"/>
+          </mask>
+          <mask id="m-blue" maskUnits="userSpaceOnUse" x="0" y="0" width="1080" height="1500">
+            <path id="p-blue" fill="none" stroke="#fff" stroke-width="70" stroke-linecap="round" stroke-linejoin="round" d="M885 1245 L871 1252 L850 1263 L827 1276 L801 1289 L776 1298 L753 1302 L734 1298 L715 1286 L695 1267 L677 1245 L662 1221 L652 1198 L649 1176 L656 1158 L673 1141 L698 1124 L726 1108 L755 1092 L781 1076 L800 1060 L815 1044 L828 1026 L839 1009 L848 992 L852 978 L853 966 L848 958 L835 955 L818 956 L796 960 L772 963 L748 964 L726 962 L707 954 L686 941 L665 925 L644 908 L625 892 L610 878 L598 868"/>
+          </mask>
+          <filter id="wet" x="-30%" y="-30%" width="160%" height="160%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="3" seed="7"/>
+            <feDisplacementMap in="SourceGraphic" scale="110" xChannelSelector="R" yChannelSelector="G"/>
+            <feGaussianBlur stdDeviation="9"/>
+          </filter>
+          <mask id="m-bloom" maskUnits="userSpaceOnUse" x="0" y="0" width="1080" height="1500">
+            <circle id="bloom-c" cx="590" cy="860" r="400" fill="#fff" filter="url(#wet)"/>
+          </mask>
+        </defs>
+        <g id="bloom-g"><image href="img/bloom.webp" x="250" y="520" width="680" height="680" mask="url(#m-bloom)"/></g>
+        <image href="img/path-rose.webp" width="1080" height="1500" mask="url(#m-rose)"/>
+        <image href="img/path-blue.webp" width="1080" height="1500" mask="url(#m-blue)"/>
+      </svg>
+      <p class="map-note">Symbolic journeys on an imaginary map</p>
+    </div>
+  </div>
+
+  <section id="souls" class="chapter-card" data-chapter="souls" aria-labelledby="t-souls">
+    <div class="card">
+      <p class="eyebrow">Chapter one · Two souls</p>
+      <h2 id="t-souls">Two travellers, each with a horizon of their own.</h2>
+      <p>Each followed a path in their own colour, across their own seas, long before the roads met.</p>
+      <ul class="key" aria-label="Map key">
+        <li><span class="swatch swatch-rose" aria-hidden="true"></span>One journey</li>
+        <li><span class="swatch swatch-blue" aria-hidden="true"></span>Another journey</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="connection" class="chapter-card" data-chapter="connection" aria-labelledby="t-connection">
+    <div class="card">
+      <p class="eyebrow">Chapter two · The connection</p>
+      <h2 id="t-connection">Where the two paths met, the colours ran together.</h2>
+      <p>On wet paper, rose and blue do not stay apart. They bloom into a new colour, and the painting becomes one.</p>
+    </div>
+  </section>
+</div>
+
+<!-- 4 · THE DESTINATION -->
+<section id="destination" class="destination" data-chapter="destination" aria-labelledby="t-destination">
+  <figure class="paint dest-art">
+    <img data-paint data-seed="0.5,0.0" data-pigment="160,140,190" data-dur="3200" src="img/destination.webp" width="1080" height="1700" alt="A dusk watercolor: a lilac and peach sky over a wide river with a small boat, coconut palms, green paddy fields, and a path leading to a small wedding mandapam glowing with lamps, framed by banana plants and hung with marigold garlands.">
+    <figcaption class="dest-text">
+      <p class="eyebrow">Chapter three · The destination</p>
+      <h2 id="t-destination">And every road led here.</h2>
+      <p class="place">Nallajerla, Andhra Pradesh</p>
+    </figcaption>
+  </figure>
+  <p class="dest-after">Two journeys arrive at one celebration, under one mandapam.</p>
+</section>
+
+<!-- 5 · THE INVITATION -->
+<section id="invitation" class="invitation" data-chapter="invitation" aria-labelledby="t-invitation">
+  <img class="thoranam" src="img/thoranam.webp" width="1080" height="360" alt="" loading="lazy">
+  <div class="invite-body">
+    <!-- TELUGU: verify with family -->
+    <p class="telugu" lang="te">శుభ వివాహం</p>
+    <p class="invite-lead">With the blessings of our families,<br>we joyfully invite you to celebrate the wedding of</p>
+    <h2 id="t-invitation" class="invite-names"><span>Akshay</span> <span class="amp">&amp;</span> <span>Priya</span></h2>
+    <p class="invite-date"><span>Saturday</span> 21 November 2026</p>
+    <dl class="invite-times">
+      <div><dt>Wedding dinner</dt><dd>8:00 PM IST</dd></div>
+      <div><dt>Wedding muhurtham</dt><dd>9:55 PM IST</dd></div>
+    </dl>
+    <p class="invite-venue">Priyanka Convention<br>Nallajerla, Andhra Pradesh, India</p>
+  </div>
+  <img class="garland" src="img/garland.webp" width="1080" height="400" alt="" loading="lazy">
+</section>
+
+<!-- 6 · WEDDING DETAILS -->
+<section id="details" class="details" data-chapter="details" aria-labelledby="t-details">
+  <figure class="paint kalasam-art">
+    <img data-paint data-seed="0.5,1.0" data-pigment="190,140,70" src="img/kalasam.webp" width="640" height="720" alt="A painted brass kalasam with mango leaves and a coconut, resting on rice." loading="lazy">
+  </figure>
+  <p class="eyebrow">Wedding details</p>
+  <h2 id="t-details">The evening of Saturday, 21 November 2026</h2>
+  <ol class="schedule">
+    <li>
+      <span class="when">8:00 PM <abbr title="India Standard Time">IST</abbr></span>
+      <span class="what">Wedding dinner</span>
+    </li>
+    <li>
+      <span class="when">9:55 PM <abbr title="India Standard Time">IST</abbr></span>
+      <span class="what">Wedding muhurtham</span>
+    </li>
+  </ol>
+  <div class="venue">
+    <p class="venue-name">Priyanka Convention</p>
+    <p>Nallajerla, Andhra Pradesh, India</p>
+    <a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Priyanka%20Convention%2C%20Nallajerla%2C%20Andhra%20Pradesh" target="_blank" rel="noopener noreferrer">Search venue on Google Maps <span aria-hidden="true">↗</span></a>
+    <p class="fine">This opens a map search for the venue name. The exact pin is still to be confirmed.</p>
+  </div>
+
+  <div class="countdown" aria-live="off">
+    <p class="eyebrow">Until the wedding dinner</p>
+    <p class="count" id="count"><span><b data-u="d">–</b> days</span><span><b data-u="h">–</b> hours</span><span><b data-u="m">–</b> minutes</span></p>
+  </div>
+
+  <!-- Calendar end time (11:00 PM IST) is a placeholder to confirm with the family. -->
+  <div class="actions">
+    <a class="btn" id="gcal" target="_blank" rel="noopener noreferrer" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Wedding%20of%20Akshay%20%26%20Priya&amp;dates=20261121T143000Z%2F20261121T173000Z&amp;ctz=Asia%2FKolkata&amp;details=Wedding%20dinner%208%3A00%20PM%20IST%20%C2%B7%20Muhurtham%209%3A55%20PM%20IST&amp;location=Priyanka%20Convention%2C%20Nallajerla%2C%20Andhra%20Pradesh%2C%20India">Add to Google Calendar <span aria-hidden="true">↗</span></a>
+    <button class="btn" type="button" id="ics">Download calendar file (.ics)</button>
+    <button class="btn" type="button" id="share">Share this invitation</button>
+  </div>
+  <p class="fine" id="share-status" role="status"></p>
+</section>
+
+<!-- 7 · FINAL BLESSING -->
+<section id="blessing" class="blessing" data-chapter="blessing" aria-labelledby="t-blessing">
+  <p class="eyebrow">With love</p>
+  <h2 id="t-blessing">Two journeys have found one road.<br>Come and walk its first steps with us.</h2>
+  <figure class="paint blessing-art">
+    <img data-paint data-seed="0.5,0.55" data-pigment="200,120,90" src="img/blessing.webp" width="1080" height="980" alt="A painted lotus muggu in rose and turmeric, with two lit brass deepams and scattered jasmine flowers." loading="lazy">
+  </figure>
+  <p class="sign">Akshay <span class="amp">&amp;</span> Priya</p>
+  <p class="sign-date">21 · 11 · 2026 · Nallajerla</p>
+</section>
+</main>
+
+<footer class="foot">
+  <p>The Atlas of Us · Design study 02 · Living Watercolor</p>
+  <p>All artwork on this page was painted procedurally for this concept. A review draft, not the final invitation.</p>
+  <p><a href="../index.html">← Back to all designs</a></p>
+</footer>
+
+<script src="app.js" defer></script>
+</body>
+</html>
