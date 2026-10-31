@@ -51,7 +51,7 @@ fs.mkdirSync(out, { recursive: true });
       const T = g('#acT'), G = g('#acG');
       return { T, G, offT: near('#routeT', T[0], T[1]), offG: near('#routeG', G[0], G[1]), st: window.__treasure.state.flight };
     });
-    samples.push({ ms, ...s, pT: +s.st.pT.toFixed(3), pG: +s.st.pG.toFixed(3) });
+    samples.push({ ms, ...s, opT: await p.evaluate(() => getComputedStyle(document.querySelector('#acT')).opacity), pT: +s.st.pT.toFixed(3), pG: +s.st.pG.toFixed(3) });
     delete samples[samples.length - 1].st;
     if (ms === 3300) await shot('06-flights-mid');
     if (ms === 2000) await shot('06a-flights-early');
@@ -73,7 +73,7 @@ fs.mkdirSync(out, { recursive: true });
   // replay flights from details
   await p.locator('.invite-bar [data-open-details]').click(); await p.waitForTimeout(300);
   await p.click('[data-replay-flight]'); await p.waitForTimeout(3500);
-  R.replayFlightScene = await p.evaluate(() => ({ s: window.__treasure.state.current, pT: window.__treasure.state.flight.pT }));
+  R.replayFlightScene = await p.evaluate(() => ({ s: window.__treasure.state.current, pT: window.__treasure.state.flight.pT, opT: getComputedStyle(document.querySelector('#acT')).opacity, opG: getComputedStyle(document.querySelector('#acG')).opacity }));
   await shot('10-replay-flight');
   // skip
   await p.click('#skipBtn'); await p.waitForTimeout(600);

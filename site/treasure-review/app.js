@@ -141,7 +141,7 @@
   function resetFlight() {
     cancelAnimationFrame(flight.raf); flight.running = false;
     dest.classList.remove('arrived'); emblem.classList.remove('on');
-    acT.style.opacity = acG.style.opacity = '';
+    [acT, acG].forEach(a => { a.getAnimations().forEach(x => x.cancel()); a.style.opacity = ''; }); // clear the arrival fade so replays show the aircraft
     followBtn.removeAttribute('aria-busy'); followBtn.querySelector('span').textContent = 'Follow the Route'; status.classList.remove('on'); status.textContent = '';
     setProgress(0, 0);
   }
