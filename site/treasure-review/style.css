@@ -12,10 +12,11 @@
   --display:"Cormorant Garamond",Georgia,"Times New Roman",serif;
   --ui:"Jost",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   --s:.45; color-scheme:light;
+  font-variant-numeric:lining-nums;
 }
-*{box-sizing:border-box}
+*{box-sizing:border-box;font-variant-numeric:lining-nums}
 html,body{margin:0;height:100%;background:var(--night);color:var(--ink);overflow:hidden;overscroll-behavior:none;-webkit-text-size-adjust:100%}
-body{font:400 15px/1.5 var(--ui);-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+body{font:400 15px/1.5 var(--ui);font-variant-numeric:lining-nums;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
 button{font:inherit;color:inherit;cursor:pointer}
 :focus-visible{outline:3px solid #fff1c6;outline-offset:3px;border-radius:10px}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
@@ -114,14 +115,14 @@ button{font:inherit;color:inherit;cursor:pointer}
 .times{margin:0 0 6px;display:grid;gap:14px}
 .times div{display:grid;grid-template-columns:1fr auto;align-items:center}
 .times dt{display:flex;align-items:center;gap:26px;font:500 40px/1.2 var(--display);color:#2a1e14}
-.times dd{margin:0;font:700 42px/1.2 var(--display);color:#2a1e14;font-variant-numeric:tabular-nums}
+.times dd{margin:0;font:700 42px/1.2 var(--display);color:#2a1e14;font-variant-numeric:lining-nums tabular-nums}
 .date-line{text-align:center;margin:10px 0 18px;font:600 36px/1.2 var(--display);color:#5a4330}
 .countdown{border:2.5px solid #e2c88e;border-radius:40px;background:linear-gradient(180deg,#fdf0d2,#f6dfae);padding:26px 20px 30px;box-shadow:0 8px 22px #5a3a1a22}
 .cd-title{margin:0 0 10px;text-align:center;font:700 44px/1.1 var(--display);color:#2a1e14}
 .cd-grid{display:grid;grid-template-columns:repeat(4,1fr)}
 .cd-grid div{text-align:center;border-left:2px solid #d9bd86}
 .cd-grid div:first-child{border-left:0}
-.cd-grid span{display:block;font:700 78px/1.05 var(--display);color:#3a2414;font-variant-numeric:tabular-nums}
+.cd-grid span{display:block;font:700 78px/1.05 var(--display);color:#3a2414;font-variant-numeric:lining-nums tabular-nums}
 .cd-grid small{font:500 30px/1.2 var(--ui);color:#3c2e22}
 .sheet-actions{display:grid;grid-template-columns:repeat(3,200px);justify-content:center;gap:52px;margin-top:34px}
 .sheet-actions .card-btn{height:210px}
