@@ -5,160 +5,163 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>The Treasure We Found · Akshay &amp; Priya</title>
 <meta name="robots" content="noindex,nofollow">
-<meta name="description" content="Akshay &amp; Priya · Saturday, 21 November 2026 · Priyanka Convention, Nallajerla. Design review build, not the official invitation.">
-<meta name="theme-color" content="#2a2018">
+<meta name="description" content="Akshay &amp; Priya · Saturday, 21 November 2026 · Priyanka Convention, Nallajerla. Review build, not the official invitation.">
+<meta name="theme-color" content="#3a2a1a">
 <meta property="og:type" content="website">
 <meta property="og:title" content="The Treasure We Found · Akshay &amp; Priya">
-<meta property="og:description" content="Saturday, 21 November 2026 · Priyanka Convention, Nallajerla · design review build">
+<meta property="og:description" content="Saturday, 21 November 2026 · Priyanka Convention, Nallajerla">
 <meta property="og:url" content="https://akshaykondapalli.github.io/akshay-priya-wedding-designs/treasure-review/">
 <meta property="og:image" content="https://akshaykondapalli.github.io/akshay-priya-wedding-designs/treasure-review/img/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="preload" href="img/discovery-base.webp" as="image">
-<link rel="preload" href="img/lid-front.webp" as="image">
-<link rel="stylesheet" href="style.css?v=35399021">
+<link rel="preload" href="img/s1-cover.webp" as="image">
+<link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
 <a class="skiplink" href="#invitation" data-skip>Skip to the invitation</a>
 
-<!-- Fixed controls (real buttons, never painted) -->
 <header class="topbar">
-  <a class="pill back" href="../index.html" aria-label="Back to all designs">← All designs</a>
-  <div class="topbar-right">
-    <button class="pill music" id="musicBtn" type="button" aria-disabled="true" title="Music coming soon">♫ <span id="musicLabel">Music coming soon</span></button>
-    <button class="pill" id="muteBtn" type="button" hidden aria-pressed="false">Mute</button>
-    <button class="pill" id="skipBtn" type="button" data-skip>Skip story</button>
-  </div>
+  <a class="pill" href="../index.html" aria-label="All designs">←<span class="long">&nbsp;All designs</span></a>
+  <button class="pill" id="skipBtn" type="button" data-skip aria-label="Skip story">Skip<span class="long">&nbsp;story</span></button>
 </header>
 
-<main id="app" class="app" data-scene="discover">
+<main class="app" id="app" data-scene="discover">
 
-  <!-- SCENE 1 · The Treasure We Found -->
-  <section class="scene is-active" id="discover" data-scene-name="discover" aria-label="The Treasure We Found">
-    <div class="backdrop" style="background-image:url(img/backdrop-1.webp)"></div>
+  <!-- SCENE 1 · Discover the Treasure (frames 1–3) -->
+  <section class="scene is-active" id="discover" aria-label="The Treasure We Found">
+    <div class="backdrop" style="background-image:url(img/bd-1.webp)"></div>
     <div class="stage" data-fit="cover">
-      <img class="art" src="img/discovery-base.webp" width="941" height="1672" alt="A travel-themed still life: a parchment map, compass, envelope with A&amp;P wax seal, flowers and a carved treasure chest. Title: The Treasure We Found. Every distance led us here. Akshay &amp; Priya." decoding="async">
-      <div class="chest-scene" aria-hidden="true">
-        <div class="chest-glow"></div>
-        <div class="beams"></div>
-        <div class="lid" id="lid">
-          <img class="lid-face lid-front" src="img/lid-front.webp" alt="" width="470" height="168">
-          <img class="lid-face lid-under" src="img/lid-under.webp" alt="" width="470" height="168">
+      <!-- chest state (frames 2–3) sits beneath the cover and is registered to it -->
+      <div class="layer" id="chestLayer" aria-hidden="true">
+        <img class="art" id="chestClosed" src="img/s1-chest.webp" width="941" height="1672" alt="">
+        <img class="art" id="chestBase" src="img/s1-chest-base.webp" width="941" height="1672" alt="">
+        <div class="chest-scene">
+          <div class="chest-glow"></div>
+          <div class="beams"></div>
+          <div class="lid" id="lid">
+            <img class="lid-face lid-front" src="img/s1-lid.webp" width="706" height="268" alt="">
+            <img class="lid-face lid-under" src="img/s1-lid-under.webp" width="706" height="268" alt="">
+          </div>
+          <img class="lock" id="lock" src="img/s1-lock.webp" width="106" height="64" alt="">
+          <div class="keyglint" id="keyglint"></div>
         </div>
-        <img class="lock" id="lock" src="img/lock.webp" alt="" width="106" height="64">
-        <div class="keyhole-glint"></div>
+        <div class="music-slot" style="left:490px;top:62px;width:420px;height:78px"></div>
+        <div class="layer" id="openLayer">
+          <img class="art" src="img/s1-open.webp" width="941" height="1672" alt="">
+          <div class="music-slot" style="left:489px;top:49px;width:426px;height:82px"></div>
+        </div>
+        <div class="flash" id="flash"></div>
       </div>
-      <button class="hotspot chest-btn" id="chestBtn" type="button" aria-label="Tap to open the treasure"></button>
+      <button class="hotspot chest-btn" id="chestBtn" type="button" aria-label="Tap to open the treasure" tabindex="-1"></button>
+      <!-- cover (frame 1) -->
+      <div class="layer" id="coverLayer">
+        <img class="art" src="img/s1-cover.webp" width="941" height="1672" alt="The Treasure We Found. Every distance led us here. Akshay &amp; Priya. A parchment map with flowers, a compass, a sealed envelope and a tag reading Different places, same heart.">
+        <div class="music-slot" style="left:492px;top:55px;width:418px;height:80px"></div>
+        <button class="story-btn" id="beginBtn" type="button" style="left:146px;top:1458px;width:664px;height:118px"><span>Tap to Begin the Journey</span><span class="chev" aria-hidden="true">›</span></button>
+      </div>
     </div>
-    <p class="hint" id="chestHint" aria-hidden="true">Tap the chest to open the treasure</p>
   </section>
 
-  <!-- SCENE 2 · The Journey -->
-  <section class="scene" id="journey" data-scene-name="journey" aria-label="The Journey">
-    <div class="backdrop" style="background-image:url(img/backdrop-2.webp)"></div>
+  <!-- SCENE 2 · The Journey (frames 4–6) -->
+  <section class="scene" id="journey" aria-label="The Journey">
+    <div class="backdrop" style="background-image:url(img/bd-2.webp)"></div>
     <div class="stage" data-fit="cover">
-      <img class="art" src="img/journey-clean.webp" width="941" height="1672" alt="A watercolor map titled The Journey: Toronto's skyline with the CN Tower on one side, a German castle in the mountains on the other, and a glowing destination by an Indian palace on the water. Different skies. Different stories. Miles apart, yet always meant to meet here. Akshay &amp; Priya." decoding="async" loading="eager">
+      <img class="art" src="img/s2-map.webp" width="941" height="1672" alt="The Journey. Two paths wandered far. One destination was waiting. A watercolor map with a boarding pass, the Toronto skyline with the CN Tower, a German castle in the mountains and a palace on the water. Different skies. Different stories. Miles apart, yet always meant to meet here. Akshay &amp; Priya.">
       <svg class="flight" id="flight" viewBox="0 0 941 1672" aria-hidden="true">
         <defs>
-          <filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="3"/></filter>
-          <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="2.2"/></filter>
-          <radialGradient id="destGlow"><stop offset="0" stop-color="#fff6d8" stop-opacity="1"/><stop offset=".35" stop-color="#ffd27a" stop-opacity=".85"/><stop offset="1" stop-color="#ffb347" stop-opacity="0"/></radialGradient>
-          <linearGradient id="goldA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3d08a"/><stop offset=".5" stop-color="#c58d3a"/><stop offset="1" stop-color="#8a5a1e"/></linearGradient>
-          <linearGradient id="ivoryB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fffaf0"/><stop offset=".55" stop-color="#ead9bd"/><stop offset="1" stop-color="#b99a6e"/></linearGradient>
-          <!-- Aircraft drawn pointing to +x, centred on 0,0 -->
-          <symbol id="planeA" viewBox="-34 -30 68 60" overflow="visible">
-            <path d="M30 0c0-2.2-2-3.4-5-3.4H8L-6-24c-.6-.9-1.6-1.4-2.7-1.4h-3.6l7.3 21.8h-12.6l-5.6-7.6h-3.5l3.4 11.2-3.4 11.2h3.5l5.6-7.6h12.6L-12.3 25.4h3.6c1.1 0 2.1-.5 2.7-1.4L8 3.4h17c3 0 5-1.2 5-3.4z" fill="url(#goldA)" stroke="#6b4314" stroke-width="1.3" stroke-linejoin="round"/>
-            <path d="M24 -1.4H6" stroke="#fff3cf" stroke-width="1.2" stroke-linecap="round" opacity=".8"/>
-          </symbol>
-          <symbol id="planeB" viewBox="-36 -32 72 64" overflow="visible">
-            <path d="M32 0c0-2.6-2.6-4-6-4H10.5L-2-26.5c-.5-.9-1.5-1.5-2.6-1.5H-9l6 24h-14l-6.5-9h-4l3.8 12.5-3.8 12.5h4l6.5-9h14l-6 24h4.4c1.1 0 2.1-.6 2.6-1.5L10.5 4H26c3.4 0 6-1.4 6-4z" fill="url(#ivoryB)" stroke="#7a4f3a" stroke-width="1.3" stroke-linejoin="round"/>
-            <path d="M-21 -9l-4-9h3l6 9z M-21 9l-4 9h3l6-9z" fill="#b5555a" opacity=".9"/>
-            <circle cx="-1" cy="-14" r="2.4" fill="#c58d3a"/><circle cx="-1" cy="14" r="2.4" fill="#c58d3a"/>
-            <path d="M26 -1.6H8" stroke="#c58d3a" stroke-width="1.4" stroke-linecap="round"/>
+          <filter id="glowF" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="5"/></filter>
+          <filter id="planeShadow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="2.5"/></filter>
+          <radialGradient id="destGlow"><stop offset="0" stop-color="#fff7d6"/><stop offset=".35" stop-color="#ffd27a" stop-opacity=".9"/><stop offset="1" stop-color="#ffb347" stop-opacity="0"/></radialGradient>
+          <linearGradient id="planeFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a86a3c"/><stop offset=".55" stop-color="#7a4524"/><stop offset="1" stop-color="#5a3018"/></linearGradient>
+          <symbol id="plane" viewBox="-40 -36 80 72" overflow="visible">
+            <path d="M36 0c0-2.8-2.6-4.4-6.2-4.4H11.5L-3.6-30c-.7-1.1-1.9-1.8-3.2-1.8H-11l8 27.4H-18l-7-9.6h-4.2l4 14L-29.2 14h4.2l7-9.6h15l-8 27.4h4.2c1.3 0 2.5-.7 3.2-1.8L11.5 4.4h18.3c3.6 0 6.2-1.6 6.2-4.4z" fill="url(#planeFill)" stroke="#f7d79a" stroke-width="1.4" stroke-linejoin="round"/>
+            <path d="M29 -1.7H9" stroke="#e6b779" stroke-width="1.3" stroke-linecap="round" opacity=".85"/>
           </symbol>
         </defs>
-        <g class="routes">
+        <path class="route-ghost" id="ghostT" d=""/>
+        <path class="route-ghost" id="ghostG" d=""/>
+        <g id="trails">
           <path class="route-glow" id="glowT" d=""/>
           <path class="route-glow" id="glowG" d=""/>
           <path class="route-dash" id="routeT" d=""/>
-          <path class="route-dash route-b" id="routeG" d=""/>
-          <path class="route-trail" id="trailT" d=""/>
-          <path class="route-trail route-trail-b" id="trailG" d=""/>
+          <path class="route-dash" id="routeG" d=""/>
         </g>
-        <g class="dest" id="dest" transform="translate(692 1012)">
-          <circle class="dest-glow" r="90" fill="url(#destGlow)"/>
-          <circle class="dest-ring r1" r="26" fill="none" stroke="#ffe3a0" stroke-width="3"/>
-          <circle class="dest-ring r2" r="26" fill="none" stroke="#ffe3a0" stroke-width="2"/>
-        </g>
-        <g class="aircraft" id="acT"><ellipse class="ac-shadow" cx="6" cy="18" rx="28" ry="9" fill="#3b2410" opacity=".28" filter="url(#shadow)"/><use href="#planeA" x="-40" y="-36" width="80" height="72"/></g>
-        <g class="aircraft" id="acG"><ellipse class="ac-shadow" cx="6" cy="18" rx="28" ry="9" fill="#3b2410" opacity=".28" filter="url(#shadow)"/><use href="#planeB" x="-41" y="-37" width="82" height="74"/></g>
-        <g class="emblem" id="emblem" transform="translate(692 880)">
-          <g class="emblem-inner">
-            <circle r="58" fill="#fff8e6" stroke="#b8893f" stroke-width="3.5"/>
-            <circle r="49" fill="none" stroke="#d9b36a" stroke-width="1.2" stroke-dasharray="2 4"/>
-            <text y="14" text-anchor="middle" class="emblem-text">A&amp;P</text>
+        <g class="dest" id="dest">
+          <circle class="dest-glow" r="110" fill="url(#destGlow)"/>
+          <circle class="dest-ring r1" r="30" fill="none" stroke="#ffe3a0" stroke-width="3"/>
+          <circle class="dest-ring r2" r="30" fill="none" stroke="#ffe3a0" stroke-width="2"/>
+          <g class="heart-pin">
+            <path d="M0 34C-14 16-28 4-28-12a28 28 0 0 1 56 0C28 4 14 16 0 34z" fill="#f08a1c" stroke="#fff3d0" stroke-width="3"/>
+            <path d="M0 -1c-6-9-17-6-17 2 0 7 9 12 17 19 8-7 17-12 17-19 0-8-11-11-17-2z" fill="#fff"/>
           </g>
         </g>
+        <g class="aircraft" id="acT"><ellipse class="ac-shadow" cx="4" cy="20" rx="30" ry="9" fill="#3b2410" opacity=".22" filter="url(#planeShadow)"/><use href="#plane" x="-44" y="-40" width="88" height="80"/></g>
+        <g class="aircraft" id="acG"><ellipse class="ac-shadow" cx="4" cy="20" rx="30" ry="9" fill="#3b2410" opacity=".22" filter="url(#planeShadow)"/><use href="#plane" x="-44" y="-40" width="88" height="80"/></g>
       </svg>
-      <button class="follow" id="followBtn" type="button"><span>Follow the Route</span><span class="chev" aria-hidden="true">›</span></button>
+      <div class="wave" id="wave" aria-hidden="true"></div>
+      <div class="music-slot" style="left:494px;top:40px;width:418px;height:80px"></div>
+      <button class="story-btn" id="followBtn" type="button" style="left:168px;top:1426px;width:596px;height:118px"><span>Follow the Route</span><span class="chev" aria-hidden="true">›</span></button>
     </div>
-    <p class="status" id="flightStatus" role="status" aria-live="polite"></p>
+    <p class="sr-only" id="flightStatus" role="status" aria-live="polite"></p>
   </section>
 
-  <!-- SCENE 3 · The Wedding Invitation (approved artwork, displayed unaltered) -->
-  <section class="scene" id="invitation" data-scene-name="invitation" aria-label="The wedding invitation">
-    <div class="backdrop" style="background-image:url(img/backdrop-3.webp)"></div>
-    <div class="stage" data-fit="contain">
-      <img class="art" id="inviteArt" src="" data-src="img/03-invitation-approved-unchanged.png" width="941" height="1672" alt="Wedding invitation. Together with our families, we cordially invite you to the wedding of Akshay and Priya. 21 November 2026. Wedding dinner 8:00 PM IST. Auspicious muhurtham 9:55 PM IST. Priyanka Convention, Nallajerla, Andhra Pradesh, India. Your presence will make our journey complete.">
-      <button class="hotspot view-details" type="button" data-open-details aria-label="View wedding details"></button>
+  <!-- SCENE 3 · The Wedding Invitation (frames 7–9) -->
+  <section class="scene" id="invitation" aria-label="The wedding invitation">
+    <div class="backdrop" style="background-image:url(img/bd-3.webp)"></div>
+    <div class="stage" data-fit="cover">
+      <img class="art" id="inviteArt" src="img/s3-invite.webp" width="941" height="1672" loading="lazy" alt="Akshay and Priya's photograph. Together with our families we cordially invite you to the wedding of Akshay and Priya. 21 November 2026. Wedding dinner 8:00 PM IST. Auspicious muhurtham 9:55 PM IST. Priyanka Convention, Nallajerla, Andhra Pradesh, India.">
+      <div class="music-slot" style="left:512px;top:26px;width:406px;height:80px"></div>
+      <nav class="card-bar" id="cardBar" aria-label="Invitation actions">
+        <button class="card-btn" type="button" data-open-details><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 9.5h17M8 3v4M16 3v4M9 14l2 2 4-4"/></svg><span>Wedding<br>Details</span></button>
+        <button class="card-btn" type="button" data-calendar><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 9.5h17M8 3v4M16 3v4M9 14l2 2 4-4"/></svg><span>Add to<br>Calendar</span></button>
+        <button class="card-btn" type="button" data-share><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5.5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="18.5" r="2.5"/><path d="M8.2 10.8l7.6-4.1M8.2 13.2l7.6 4.1"/></svg><span>Share<br>Invitation</span></button>
+        <button class="card-btn" type="button" data-replay><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12a7.5 7.5 0 1 0 2.2-5.3"/><path d="M4 4v4.5h4.5"/></svg><span>Replay<br>Story</span></button>
+      </nav>
+
+      <!-- Wedding Details sheet (frame 9) -->
+      <section class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle" hidden>
+        <button class="sheet-close" id="sheetClose" type="button" aria-label="Close wedding details">×</button>
+        <h2 id="sheetTitle">Wedding Details</h2>
+        <div class="sheet-rule"></div>
+        <div class="venue-row">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.6 7-12.2A7 7 0 0 0 5 9.8C5 15.4 12 22 12 22z"/><circle cx="12" cy="9.8" r="2.6"/></svg>
+          <div><p class="venue-name">Priyanka Convention</p><p class="venue-place">Nallajerla, Andhra Pradesh, India</p></div>
+        </div>
+        <a class="maps-btn" id="mapsLink" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=Priyanka%20Convention%2C%20Nallajerla%2C%20Andhra%20Pradesh"><span class="gpin" aria-hidden="true"></span>Search on Google Maps <span aria-hidden="true">↗</span></a>
+        <dl class="times">
+          <div><dt><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17h18M5 17a7 7 0 0 1 14 0M12 8V6M10 6h4"/></svg>Wedding Dinner</dt><dd><span aria-hidden="true">: </span>8:00 PM IST</dd></div>
+          <div><dt><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V10l8-6 8 6v11M9 21v-6h6v6M3 21h18"/></svg>Auspicious Muhurtham</dt><dd><span aria-hidden="true">: </span>9:55 PM IST</dd></div>
+        </dl>
+        <p class="date-line">Saturday, 21 November 2026</p>
+        <div class="countdown" aria-label="Countdown to the muhurtham">
+          <p class="cd-title">Until the Muhurtham</p>
+          <div class="cd-grid">
+            <div><span id="cdD">--</span><small>Days</small></div>
+            <div><span id="cdH">--</span><small>Hours</small></div>
+            <div><span id="cdM">--</span><small>Minutes</small></div>
+            <div><span id="cdS">--</span><small>Seconds</small></div>
+          </div>
+        </div>
+        <div class="sheet-actions">
+          <button class="card-btn" type="button" data-calendar><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 9.5h17M8 3v4M16 3v4M9 14l2 2 4-4"/></svg><span>Add to<br>Calendar</span></button>
+          <button class="card-btn" type="button" data-share><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5.5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="18.5" r="2.5"/><path d="M8.2 10.8l7.6-4.1M8.2 13.2l7.6 4.1"/></svg><span>Share<br>Invitation</span></button>
+          <button class="card-btn" type="button" data-replay><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12a7.5 7.5 0 1 0 2.2-5.3"/><path d="M4 4v4.5h4.5"/></svg><span>Replay<br>Story</span></button>
+        </div>
+        <p class="fine">The map button searches for the venue by name; the exact pin is still to be confirmed. Calendar entries run 8:00–11:00 PM IST; <strong>the 11:00 PM end time is provisional</strong>. Wedding only.</p>
+        <p class="fine note" id="note" role="status" aria-live="polite"></p>
+      </section>
+      <div class="cal-pop" id="calPop" role="dialog" aria-label="Add to calendar" hidden>
+        <a class="cal-opt" id="gcalLink" target="_blank" rel="noopener" href="#">Google Calendar ↗</a>
+        <button class="cal-opt" type="button" id="icsBtn">Apple / Outlook (.ics file)</button>
+        <button class="cal-opt subtle" type="button" id="calClose">Cancel</button>
+      </div>
     </div>
-    <nav class="invite-bar" aria-label="Invitation actions">
-      <button class="bar-btn primary" type="button" data-open-details>Wedding details</button>
-      <button class="bar-btn" type="button" data-replay>Replay story</button>
-      <button class="bar-btn" type="button" data-share>Share</button>
-    </nav>
   </section>
 
   <div class="bloom" id="bloom" aria-hidden="true"></div>
 </main>
 
-<!-- Wedding details sheet -->
-<div class="sheet-scrim" id="scrim" hidden></div>
-<section class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle" hidden>
-  <div class="sheet-grip" aria-hidden="true"></div>
-  <button class="sheet-close" type="button" id="sheetClose" aria-label="Close wedding details">×</button>
-  <p class="eyebrow">Wedding details</p>
-  <h2 id="sheetTitle">Akshay <em>&amp;</em> Priya</h2>
-  <p class="date">Saturday, 21 November 2026</p>
-  <dl class="times">
-    <div><dt>Wedding dinner</dt><dd>8:00 PM IST</dd></div>
-    <div><dt>Auspicious muhurtham</dt><dd>9:55 PM IST</dd></div>
-  </dl>
-  <div class="venue">
-    <p class="venue-name">Priyanka Convention</p>
-    <p>Nallajerla, Andhra Pradesh, India</p>
-  </div>
-  <div class="countdown" aria-label="Countdown to the muhurtham">
-    <div><span id="cdD">--</span><small>days</small></div>
-    <div><span id="cdH">--</span><small>hours</small></div>
-    <div><span id="cdM">--</span><small>min</small></div>
-    <div><span id="cdS">--</span><small>sec</small></div>
-  </div>
-  <p class="cd-label" id="cdLabel">until the muhurtham · India Standard Time</p>
-  <div class="actions">
-    <a class="act primary" id="mapsLink" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=Priyanka%20Convention%2C%20Nallajerla%2C%20Andhra%20Pradesh">Search venue on Google Maps ↗</a>
-    <a class="act" id="gcalLink" target="_blank" rel="noopener" href="#">Add to Google Calendar ↗</a>
-    <button class="act" type="button" id="icsBtn">Download calendar file (.ics)</button>
-    <button class="act" type="button" data-share>Share invitation</button>
-    <div class="act-row">
-      <button class="act" type="button" data-replay>Replay story</button>
-      <button class="act" type="button" data-replay-flight>Replay flights</button>
-    </div>
-  </div>
-  <p class="fine">The map button searches for the venue by name; the exact pin is still to be confirmed. Calendar entries run 8:00–11:00 PM IST. <strong>The 11:00 PM end time is provisional.</strong> Wedding only: no other functions.</p>
-  <p class="fine share-note" id="shareNote" role="status" aria-live="polite"></p>
-</section>
+<template id="musicTpl"><button class="music-pill" type="button" aria-disabled="true" title="Music coming soon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V5l11-2v13"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="17.5" cy="16" r="2.5"/></svg><span class="music-label">Music Coming Soon</span></button></template>
 
-<script src="routes.js?v=35399021"></script>
-<script src="app.js?v=35399021"></script>
+<script src="app.js?v=3"></script>
 </body>
 </html>
