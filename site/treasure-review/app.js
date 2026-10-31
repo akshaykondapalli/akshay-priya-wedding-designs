@@ -221,10 +221,10 @@
   function placeFab() {
     const scene = scenes[current], vh = innerHeight;
     const obs = [];
-    const add = el => { if (!el) return; const cs = getComputedStyle(el); if (cs.display === 'none' || cs.visibility === 'hidden' || +cs.opacity < .05) return; const r = el.getBoundingClientRect(); if (r.width && r.height) obs.push(r); };
+    const add = (el, force) => { if (!el) return; const cs = getComputedStyle(el); if (cs.display === 'none' || (!force && (cs.visibility === 'hidden' || +cs.opacity < .05))) return; const r = el.getBoundingClientRect(); if (r.width && r.height) obs.push(r); };
     if (current === 'discover') { add(s1 === 'cover' ? beginBtn : null); if (s1 !== 'cover') { const st = scene.querySelector('.stage').getBoundingClientRect(), k = st.width / 941; obs.push({ left: st.left + 126 * k, right: st.left + 818 * k, top: st.top + 930 * k, bottom: st.top + 1606 * k }); } }
     if (current === 'journey') add(followBtn);
-    if (current === 'invitation') { add(cardBar.classList.contains('on') ? cardBar : null); if (!sheet.hidden) add(sheet); if (!calPop.hidden) add(calPop); }
+    if (current === 'invitation') { if (cardBar.classList.contains('on')) add(cardBar, true); if (!sheet.hidden) { const st = scene.querySelector('.stage').getBoundingClientRect(), k = st.width / 941, r = sheet.getBoundingClientRect(); obs.push({ left: r.left, right: r.right, top: st.top + 440 * k, bottom: st.bottom }); } if (!calPop.hidden) add(calPop, true); }
     const tryPos = (compact, bottom) => { fab.classList.toggle('compact', compact); fab.style.setProperty('--fab-bottom', bottom + 'px'); const r = fab.getBoundingClientRect(); const pad = 6; const hit = obs.find(o => r.left < o.right + pad && r.right > o.left - pad && r.top < o.bottom + pad && r.bottom > o.top - pad); return hit; };
     fab.style.transition = 'none';
     let hit = tryPos(false, 12);
@@ -233,6 +233,8 @@
     void fab.offsetWidth; fab.style.transition = '';
   }
   addEventListener('resize', () => requestAnimationFrame(placeFab));
+  cardBar.addEventListener('transitionend', () => placeFab());
+  document.getElementById('sheet').addEventListener('animationend', () => placeFab());
 
   /* ---------- skip / replay ---------- */
   function hardReset() { runId++; resetScene1(); resetFlight(); closeSheet(); closeCal(); cardBar.classList.remove('on'); bloom.getAnimations().forEach(a => a.cancel()); bloom.style.opacity = 0; }
