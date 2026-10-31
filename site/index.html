@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Atlas of Us Design Review</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="Private review room comparing four interactive invitation directions for Akshay & Priya's wedding. Not the official invitation.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The Atlas of Us · Design review">
+<meta property="og:description" content="Four invitation directions for Akshay & Priya · Saturday, 21 November 2026 · review site, not the official invitation">
+<meta property="og:url" content="https://akshaykondapalli.github.io/akshay-priya-wedding-designs/">
+<meta property="og:image" content="https://akshaykondapalli.github.io/akshay-priya-wedding-designs/previews/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#17151a">
+<style>
+/* Layout: a dark gallery wall. Four phone "plates" hang in a row; a chapter switcher lines them up scene by scene; an identity ledger sits below. */
+@font-face{font-family:"Gloock";src:url(fonts/gloock-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Figtree";src:url(fonts/figtree-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Figtree";src:url(fonts/figtree-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Figtree";src:url(fonts/figtree-latin-600-normal.woff2) format("woff2");font-weight:600;font-display:swap}
+:root{
+  --wall:#17151a; --wall-2:#211e25; --rail:#2e2a33; --line:#3b3640;
+  --text:#ece6dc; --muted:#a59d93; --brass:#c9a46a; --brass-2:#e3c48f;
+  --display:"Gloock",Georgia,"Times New Roman",serif;
+  --ui:"Figtree",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--wall);color:var(--text);font:400 15px/1.6 var(--ui);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--brass-2);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1320px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.eyebrow{font:600 11px/1.4 var(--ui);letter-spacing:.2em;text-transform:uppercase;color:var(--brass)}
+h1,h2,h3{font-family:var(--display);font-weight:400;text-wrap:balance;margin:0}
+
+/* Header */
+.mast{padding-block:44px 28px;border-bottom:1px solid var(--line)}
+.mast-grid{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:32px;align-items:end}
+.mast h1{font-size:clamp(40px,6.2vw,84px);line-height:.95;letter-spacing:-.01em;margin-top:14px}
+.mast h1 em{font-style:normal;color:var(--brass-2)}
+.mast p{color:var(--muted);max-width:56ch;margin:16px 0 0}
+.facts{border:1px solid var(--line);border-radius:2px;padding:18px 20px;display:grid;gap:10px;background:var(--wall-2)}
+.facts dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 18px;font-size:14px}
+.facts dt{color:var(--muted)}
+.facts dd{margin:0;font-variant-numeric:tabular-nums}
+.notice{display:flex;gap:12px;align-items:flex-start;margin-top:22px;padding:12px 14px;border-left:2px solid var(--brass);background:#c9a46a12;color:#d9d0c3;font-size:13.5px;max-width:78ch}
+
+/* Section headings */
+section{padding-block:56px 8px}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:26px}
+.sec-head h2{font-size:clamp(28px,3.4vw,42px);line-height:1.05;margin-top:8px}
+.sec-head p{color:var(--muted);margin:0;max-width:52ch}
+
+/* Plates */
+.plates{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}
+.plate{display:flex;flex-direction:column;gap:14px;min-width:0;scroll-margin-top:24px}
+.plate:target .phone{box-shadow:0 0 0 2px var(--brass-2),0 30px 60px #0008}
+.phone{position:relative;aspect-ratio:390/844;max-width:100%;border-radius:30px;overflow:hidden;background:#0d0c0f;border:7px solid #0d0c0f;box-shadow:0 0 0 1px var(--line),0 30px 60px #0008;transition:transform .35s ease,box-shadow .35s ease}
+.phone img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.phone .ph{position:absolute;inset:0;display:grid;place-items:center;color:var(--muted);font-size:13px;text-align:center;padding:20px}
+a.phone-link:hover .phone{transform:translateY(-4px)}
+.plate-num{font:400 13px/1 var(--display);color:var(--brass)}
+.plate h3{font-size:24px;line-height:1.1;margin-top:4px}
+.mood{color:var(--muted);font-size:13px;margin:4px 0 0}
+.swatches{display:flex;gap:6px;margin-top:2px}
+.swatches span{width:22px;height:22px;border-radius:50%;box-shadow:inset 0 0 0 1px #ffffff22}
+.actions{display:flex;flex-wrap:wrap;gap:8px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:42px;padding:0 16px;border-radius:999px;font:600 13px/1 var(--ui);letter-spacing:.02em;text-decoration:none;cursor:pointer;border:1px solid var(--line);background:transparent;color:var(--text)}
+.btn.primary{background:var(--brass);border-color:var(--brass);color:#1b160f}
+.btn.primary:hover{background:var(--brass-2)}
+.btn:not(.primary):hover{border-color:var(--brass)}
+.btn[data-state="copied"]{border-color:#8fb48b;color:#bfe0bb}
+
+/* Chapter compare */
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:22px}
+.tab{min-height:40px;padding:0 14px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--muted);font:500 13px/1 var(--ui);cursor:pointer}
+.tab[aria-selected="true"]{background:var(--text);color:var(--wall);border-color:var(--text)}
+.tab .n{font-variant-numeric:tabular-nums;opacity:.6;margin-right:6px}
+.row4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}
+.row4 figure{margin:0;min-width:0}
+.row4 figcaption{margin-top:10px;font-size:13px;color:var(--muted)}
+.row4 figcaption b{color:var(--text);font-weight:500}
+
+/* Ledger */
+.ledger-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:2px}
+table.ledger{width:100%;border-collapse:collapse;min-width:860px;font-size:14px}
+.ledger th,.ledger td{text-align:left;vertical-align:top;padding:16px 18px;border-bottom:1px solid var(--line)}
+.ledger thead th{font:400 19px/1.2 var(--display);background:var(--wall-2)}
+.ledger thead th small{display:block;font:600 10px/1.6 var(--ui);letter-spacing:.18em;text-transform:uppercase;color:var(--brass)}
+.ledger tbody th{font:600 11px/1.5 var(--ui);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);width:150px}
+.ledger tr:last-child td,.ledger tr:last-child th{border-bottom:0}
+
+/* Side-by-side live */
+.live{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.live .frame{aspect-ratio:390/760;max-width:100%;border:6px solid #0d0c0f;border-radius:26px;overflow:hidden;background:#0d0c0f;box-shadow:0 0 0 1px var(--line)}
+.live iframe{width:100%;height:100%;border:0;display:block;background:#fff}
+.live-cta{display:grid;place-items:center;height:100%;padding:18px;text-align:center;color:var(--muted);font-size:13px}
+
+/* Notes */
+.notes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.notes label{display:block;font:600 11px/1.4 var(--ui);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.notes textarea{width:100%;min-height:120px;resize:vertical;background:var(--wall-2);color:var(--text);border:1px solid var(--line);border-radius:2px;padding:12px;font:400 14px/1.5 var(--ui)}
+.small{font-size:12.5px;color:var(--muted)}
+
+footer{margin-top:72px;padding-block:28px 48px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+
+@media (max-width:1080px){.plates,.row4,.live,.notes{grid-template-columns:repeat(2,minmax(0,1fr))}.mast-grid{grid-template-columns:1fr}}
+@media (max-width:560px){
+  .plates{grid-template-columns:1fr;gap:40px}
+  .plate{display:grid;grid-template-columns:42% minmax(0,1fr);gap:16px;align-items:start}
+  .plate .meta{display:flex;flex-direction:column;gap:10px;min-width:0}
+  .phone{border-width:5px;border-radius:20px}
+  .row4{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:62%;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px}
+  .row4 figure{scroll-snap-align:start}
+  .live{grid-template-columns:1fr}
+  .notes{grid-template-columns:1fr}
+  .btn{min-height:44px}
+}
+</style>
+</head>
+<body>
+<header class="mast">
+  <div class="wrap mast-grid">
+    <div>
+      <div class="eyebrow">The Atlas of Us · design review room</div>
+      <h1>Four ways to say <em>one destination.</em></h1>
+      <p>Four independent directions for Akshay &amp; Priya's interactive wedding invitation. Each one tells the same story in seven chapters, from arrival to the final blessing. Open each, compare them chapter by chapter, and choose the direction to finish.</p>
+      <div class="notice" role="note"><span>This is a review site, not the official invitation. Anyone with the link can open it, so share it only with people helping you decide.</span></div>
+    </div>
+    <aside class="facts" aria-label="Wedding details used in every design">
+      <div class="eyebrow">Same details in all four</div>
+      <dl>
+        <dt>Couple</dt><dd>Akshay &amp; Priya</dd>
+        <dt>Date</dt><dd>Saturday, 21 November 2026</dd>
+        <dt>Dinner</dt><dd>8:00 PM IST</dd>
+        <dt>Muhurtham</dt><dd>9:55 PM IST</dd>
+        <dt>Venue</dt><dd>Priyanka Convention, Nallajerla, Andhra Pradesh, India</dd>
+      </dl>
+      <div class="small">Wedding only. No other functions appear in any design.</div>
+    </aside>
+  </div>
+</header>
+
+<main>
+<section id="designs" aria-labelledby="designs-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="eyebrow">The four directions</div><h2 id="designs-h">Open each experience</h2></div>
+      <p>Every design has a link back to this page in its top bar. "Copy review link" copies a direct link to that one design.</p>
+    </div>
+    <div class="plates" id="plates"></div>
+  </div>
+</section>
+
+<section id="chapters" aria-labelledby="chapters-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="eyebrow">Side by side</div><h2 id="chapters-h">Compare chapter by chapter</h2></div>
+      <p>Pick a chapter to see how each direction handles the same moment. Screens are captured on a 390 × 844 phone.</p>
+    </div>
+    <div class="tabs" role="tablist" aria-label="Story chapter" id="tabs"></div>
+    <div class="row4" id="row4" role="tabpanel" aria-live="polite"></div>
+  </div>
+</section>
+
+<section id="identity" aria-labelledby="identity-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="eyebrow">Visual identities</div><h2 id="identity-h">What makes each one different</h2></div>
+    </div>
+    <div class="ledger-wrap"><table class="ledger" id="ledger"></table></div>
+  </div>
+</section>
+
+<section id="live" aria-labelledby="live-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="eyebrow">Live, at phone size</div><h2 id="live-h">Try all four at once</h2></div>
+      <p>Loads the four real pages in phone-sized frames so you can scroll them next to each other. Works best on a laptop or tablet.</p>
+    </div>
+    <button class="btn primary" id="loadLive" type="button">Load the four live previews</button>
+    <div class="live" id="liveGrid" style="margin-top:22px"></div>
+  </div>
+</section>
+
+<section id="notes" aria-labelledby="notes-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="eyebrow">Your notes</div><h2 id="notes-h">Jot down what you like</h2></div>
+      <p>Notes stay in this browser on this device only. Nothing is sent anywhere.</p>
+    </div>
+    <div class="notes" id="notesGrid"></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">The Atlas of Us · design review for Akshay &amp; Priya · all artwork original and generated for this review · no tracking, no external requests.</div>
+</footer>
+
+<script>
+const DESIGNS=[
+ {slug:"heritage",n:"01",name:"Cinematic Heritage Romance",mood:"Candle-lit · tactile · timeless",
+  swatches:["#173326","#c7a35f","#e9dcc0","#6e2422","#2a1c14"],
+  ledger:{material:"Green leather atlas, aged parchment, brass, jasmine, rosewood",type:"Cormorant Garamond with EB Garamond",light:"Night, warm lamp light, deep shadow",sig:"The leather atlas cover swings open under lamplight",dest:"A lamplit pelli mandapam with jasmine strings and deepams"}},
+ {slug:"watercolor",n:"02",name:"Living Watercolor Painting",mood:"Painted · airy · poetic",
+  swatches:["#7f9a6b","#c9707a","#6fa0bd","#d7a85a","#fbf6ec"],
+  ledger:{material:"Cold-press paper, transparent pigment washes",type:"Script for names with a bookish serif",light:"Soft daylight through to Godavari dusk",sig:"Scenes spread across the page like wet paint",dest:"A painted delta landscape with a glowing mandapam"}},
+ {slug:"editorial",n:"03",name:"Ultra-Luxury Editorial",mood:"Precise · quiet · couture",
+  swatches:["#f3efe7","#151413","#8d877e","#a8895a","#9aa58f"],
+  ledger:{material:"Raw silk, linen, brushed brass, still-life plates",type:"Bodoni Moda with a tracked grotesk",light:"Even studio light, generous white space",sig:"Two hairline paths meet in the gutter as the ampersand forms",dest:"Architectural plates, a self-drawing muggu"}},
+ {slug:"fusion",n:"04",name:"Cinematic + Watercolor Fusion",mood:"Collector's atlas · journey · luminous",
+  swatches:["#123a3a","#d8bd84","#d98d8f","#f2c7a0","#f0a640"],
+  ledger:{material:"Cloth-bound atlas with brass corners, painted map, lit courtyard",type:"Fraunces with a clean sans",light:"Map daylight into glowing dusk",sig:"The painted map dissolves into a lit wedding courtyard",dest:"A dusk courtyard with lamps igniting one by one"}}
+];
+const CHAPTERS=[["arrival","Arrival"],["souls","Two Souls"],["connection","The Connection"],["destination","The Destination"],["invitation","The Invitation"],["details","Wedding Details"],["blessing","Final Blessing"]];
+const designURL=s=>new URL(s+"/index.html",location.href).href;
+const img=(s,c,alt)=>`<img src="previews/${s}-${c}.webp" alt="${alt}" loading="lazy" decoding="async" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ph',textContent:'Preview image not captured yet'}))">`;
+
+/* Plates */
+document.getElementById("plates").innerHTML=DESIGNS.map(d=>`
+ <article class="plate" id="${d.slug}" aria-labelledby="${d.slug}-h">
+   <a class="phone-link" href="${d.slug}/index.html" aria-label="Open ${d.name}"><div class="phone">${img(d.slug,"arrival",d.name+" opening screen on a phone")}</div></a>
+   <div class="meta">
+     <div><div class="plate-num">${d.n}</div><h3 id="${d.slug}-h">${d.name}</h3><p class="mood">${d.mood}</p></div>
+     <div class="swatches" aria-label="Palette">${d.swatches.map(c=>`<span style="background:${c}" title="${c}"></span>`).join("")}</div>
+     <div class="actions">
+       <a class="btn primary" href="${d.slug}/index.html">Open experience</a>
+       <button class="btn" type="button" data-copy="${d.slug}">Copy review link</button>
+     </div>
+   </div>
+ </article>`).join("");
+
+document.addEventListener("click",async e=>{
+  const b=e.target.closest("[data-copy]"); if(!b)return;
+  const url=designURL(b.dataset.copy);
+  const done=t=>{b.textContent=t;b.dataset.state="copied";setTimeout(()=>{b.textContent="Copy review link";delete b.dataset.state},2200)};
+  try{await navigator.clipboard.writeText(url);done("Link copied")}
+  catch(_){const i=document.createElement("input");i.value=url;i.setAttribute("aria-label","Review link");b.after(i);i.select();done("Select and copy")}
+});
+
+/* Chapters */
+const tabs=document.getElementById("tabs"),row=document.getElementById("row4");
+tabs.innerHTML=CHAPTERS.map(([k,l],i)=>`<button class="tab" role="tab" id="tab-${k}" aria-selected="${i===0}" data-ch="${k}"><span class="n">${i+1}</span>${l}</button>`).join("");
+function showChapter(k){
+  tabs.querySelectorAll(".tab").forEach(t=>t.setAttribute("aria-selected",t.dataset.ch===k));
+  const label=CHAPTERS.find(c=>c[0]===k)[1];
+  row.setAttribute("aria-labelledby","tab-"+k);
+  row.innerHTML=DESIGNS.map(d=>`<figure><a class="phone-link" href="${d.slug}/index.html"><div class="phone">${img(d.slug,k,d.name+", "+label)}</div></a><figcaption><b>${d.n} ${d.name}</b><br>${label}</figcaption></figure>`).join("");
+}
+tabs.addEventListener("click",e=>{const t=e.target.closest(".tab");if(t)showChapter(t.dataset.ch)});
+tabs.addEventListener("keydown",e=>{
+  if(!["ArrowRight","ArrowLeft"].includes(e.key))return;
+  const all=[...tabs.querySelectorAll(".tab")],i=all.indexOf(document.activeElement);
+  const n=all[(i+(e.key==="ArrowRight"?1:-1)+all.length)%all.length];n.focus();showChapter(n.dataset.ch);
+});
+showChapter("arrival");
+
+/* Ledger */
+const rows=[["Materials","material"],["Typography","type"],["Light","light"],["Signature moment","sig"],["Destination","dest"]];
+document.getElementById("ledger").innerHTML=`<thead><tr><th scope="col"><span class="sr"></span></th>${DESIGNS.map(d=>`<th scope="col"><small>${d.n}</small>${d.name}</th>`).join("")}</tr></thead><tbody>${rows.map(([l,k])=>`<tr><th scope="row">${l}</th>${DESIGNS.map(d=>`<td>${d.ledger[k]}</td>`).join("")}</tr>`).join("")}</tbody>`;
+
+/* Live */
+document.getElementById("loadLive").addEventListener("click",function(){
+  document.getElementById("liveGrid").innerHTML=DESIGNS.map(d=>`<div><div class="frame"><iframe src="${d.slug}/index.html" title="${d.name} live preview" loading="lazy"></iframe></div><p class="small" style="margin:10px 0 0">${d.n} ${d.name} · <a href="${d.slug}/index.html">open full screen</a></p></div>`).join("");
+  this.textContent="Previews loaded";this.disabled=true;
+});
+
+/* Notes */
+const store={get(k){try{return localStorage.getItem(k)||""}catch(_){return ""}},set(k,v){try{localStorage.setItem(k,v)}catch(_){}}};
+document.getElementById("notesGrid").innerHTML=DESIGNS.map(d=>`<div><label for="note-${d.slug}">${d.n} ${d.name}</label><textarea id="note-${d.slug}" placeholder="What works, what to change…"></textarea></div>`).join("");
+DESIGNS.forEach(d=>{const t=document.getElementById("note-"+d.slug);t.value=store.get("atlas-note-"+d.slug);t.addEventListener("input",()=>store.set("atlas-note-"+d.slug,t.value))});
+</script>
+</body>
+</html>
