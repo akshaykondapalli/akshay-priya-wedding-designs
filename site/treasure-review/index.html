@@ -14,7 +14,7 @@
 <meta property="og:image" content="https://akshaykondapalli.github.io/akshay-priya-wedding-designs/treasure-review/img/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" href="img/s1-cover.webp" as="image">
-<link rel="stylesheet" href="style.css?v=6">
+<link rel="stylesheet" href="style.css?v=7">
 </head>
 <body>
 <a class="skiplink" href="#invitation" data-skip>Skip to the invitation</a>
@@ -31,10 +31,10 @@
     <div class="backdrop" style="background-image:url(img/bd-1.webp)"></div>
     <div class="stage" data-fit="cover">
       <!-- chest state (frames 2–3) sits beneath the cover and is registered to it -->
-      <div class="layer" id="chestLayer" aria-hidden="true">
+      <div class="layer" id="chestLayer">
         <img class="art" id="chestClosed" src="img/s1-chest.webp" width="941" height="1672" alt="">
         <img class="art" id="chestBase" src="img/s1-chest-base.webp" width="941" height="1672" alt="">
-        <div class="chest-scene">
+        <div class="chest-scene" aria-hidden="true">
           <div class="chest-glow"></div>
           <div class="beams"></div>
           <div class="lid" id="lid">
@@ -160,8 +160,10 @@
   <div class="bloom" id="bloom" aria-hidden="true"></div>
 </main>
 
-<template id="musicTpl"><button class="music-pill" type="button" aria-disabled="true" title="Music coming soon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V5l11-2v13"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="17.5" cy="16" r="2.5"/></svg><span class="music-label">Music Coming Soon</span></button></template>
+<template id="musicTpl"><button class="music-pill" type="button" aria-pressed="false" aria-label="Play music"><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V5l11-2v13"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="17.5" cy="16" r="2.5"/></svg><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg><span class="music-label">Play Music</span></button></template>
+<!-- one persistent audio element for the whole invitation; nothing plays until the guest taps Play Music -->
+<audio id="bgm" src="audio/wedding-music.mp3" preload="none" loop playsinline></audio>
 
-<script src="app.js?v=6"></script>
+<script src="app.js?v=7"></script>
 </body>
 </html>

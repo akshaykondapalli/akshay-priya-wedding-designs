@@ -6,7 +6,7 @@
 (function () {
   'use strict';
   // ---------- configuration ----------
-  const MUSIC_SRC = '';                                   // add a licensed track later, e.g. 'audio/our-song.mp3'
+  const MUSIC_VOLUME = 0.4;                              // soundtrack: audio/wedding-music.mp3 (the <audio id="bgm"> element)
   const MUHURTHAM = new Date('2026-11-21T21:55:00+05:30');
   const CAL = { start: '20261121T143000Z', end: '20261121T173000Z' }; // 8:00–11:00 PM IST · end time PROVISIONAL
   const TITLE = 'Wedding of Akshay & Priya';
@@ -43,18 +43,24 @@
   const tpl = $('#musicTpl');
   $$('.music-slot').forEach(slot => slot.appendChild(tpl.content.cloneNode(true)));
   const pills = $$('.music-pill');
-  let audio = null;
-  function setMusicUI(playing) { pills.forEach(p => { p.setAttribute('aria-pressed', String(playing)); p.querySelector('.music-label').textContent = playing ? 'Pause Music' : 'Play Music'; }); }
-  if (MUSIC_SRC) {
-    pills.forEach(p => { p.removeAttribute('aria-disabled'); p.title = 'Play music'; });
-    setMusicUI(false);
-    pills.forEach(p => p.addEventListener('click', () => {
-      if (!audio) { audio = new Audio(MUSIC_SRC); audio.loop = true; audio.volume = .6; }
-      if (audio.paused) audio.play().then(() => setMusicUI(true)).catch(() => {}); else { audio.pause(); setMusicUI(false); }
-    }));
-    document.addEventListener('visibilitychange', () => { if (document.hidden && audio && !audio.paused) { audio.pause(); setMusicUI(false); } });
+  // One persistent <audio> element for the whole invitation. Scene changes, Replay Story and the
+  // Wedding Details sheet never touch it, so the music carries on uninterrupted.
+  const audio = $('#bgm'); audio.loop = true; audio.volume = MUSIC_VOLUME;
+  function setMusicUI(playing) {
+    pills.forEach(p => { p.setAttribute('aria-pressed', String(playing)); p.setAttribute('aria-label', playing ? 'Pause music' : 'Play music'); p.querySelector('.music-label').textContent = playing ? 'Pause Music' : 'Play Music'; });
   }
-  // review build: no track configured → pills stay visibly disabled and never pretend to play
+  function toggleMusic() {
+    if (audio.paused) {
+      audio.volume = MUSIC_VOLUME;
+      const pr = audio.play();                          // only ever called from a guest's tap (autoplay rules)
+      if (pr && pr.catch) pr.catch(() => setMusicUI(false));
+    } else audio.pause();                               // keeps currentTime, so Play resumes where it stopped
+  }
+  audio.addEventListener('play', () => setMusicUI(true));
+  audio.addEventListener('pause', () => setMusicUI(false));
+  audio.addEventListener('error', () => setMusicUI(false));
+  pills.forEach(p => p.addEventListener('click', toggleMusic));
+  setMusicUI(false);
 
   /* ---------- scenes ---------- */
   function show(name) {
